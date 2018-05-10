@@ -1,0 +1,14 @@
+nav {
+  text-align: center;
+  background-color: #006C7F;
+  width: 100%;
+  height: 50px;
+  padding-top: 15px;
+  font-size: 18px;
+}
+
+a:link, a:visited {
+  color: white;
+  text-decoration: none;
+}
+

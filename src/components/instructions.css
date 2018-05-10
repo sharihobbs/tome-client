@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  width: 100%;
+  min-height: 160px;
+  border: solid #006C7F;
+  border-width: 1px;
+  border-radius: 3px;
+  background-color: #006C7F;
+  color: white;
+  margin-top: 50px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding-right: 10px;
+  padding-left: 10px;
+  text-align: center;
+}

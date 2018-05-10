@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+.title-wrapper {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.hero {
+  text-align: center;
+}
+
+.tome-title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 48px;
+  margin-bottom: 0;
+}
+
+.tagline {
+  font-size: 20px;
+  margin-top: 0;
+  font-family: 'Ovo', serif;
+  margin-bottom: 60px;
+}
+
+.terms {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  display: inline-block;
+  margin: 0 auto;
+  width: 280px;
+}
+
+.terms-btn {
+  margin-left: 5px;
+}
+
+.search-form {
+  text-align: center;
+}
+
+
+

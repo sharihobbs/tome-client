@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  padding-top: 30px;
+}
+
+.field-div {
+  display: block;
+}
+
+.login-field {
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-right: 5px;
+}
+
+.input {
+  display: inline-block;
+  margin: 0 auto;
+  width: 150px;
+}
+
+.login-btn {
+  margin-left: 5px;
+}
+
+.login-form {
+  text-align: center;
+}
