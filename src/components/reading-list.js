@@ -39,17 +39,13 @@ export function ReadingList(props) {
   );
 }
 
-const mapStateToProps = (state, props) => {
-    console.log(`props: ${JSON.stringify(props, null, 2)}`)
-    const listId = props.match.params.listId;
-    const list = state[listId];
-    return {
-        listId,
-        listName: list.name,
-        readList: Object.keys(list.books).map(bookId =>
-              list.books[bookId]
-        )
-    };
-};
+const mapStateToProps = state => ({
+    id: state.id,
+    thumbnail: state.thumbnail,
+    title: state.title,
+    author: state.author,
+    isbn: state.isbn,
+    note: state.note
+});
 
 export default connect(mapStateToProps)(ReadingList);
