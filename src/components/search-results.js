@@ -5,7 +5,7 @@ import './search-results.css';
 import '../grid.css';
 
 export function SearchResults(props) {
-  const books = props.searchResults.map(book =>
+  const books = props.searResults.map(book =>
     <li className="search-results-book" key={book.id}>
       <div className="col-4">
         <div className="book">
@@ -17,11 +17,9 @@ export function SearchResults(props) {
               <p className="isbn">ISBN: {book.isbn}</p>
               <div className="note-wrapper">
                   <label htmlFor="note" className="note-label">Note:</label>
-                  <textarea rows="4" maxLength="140" className="note">{book.note}</textarea>
+                  <textarea rows="4" maxLength="140" className="note"></textarea>
                   <div className="btn-wrapper">
-                    <button className="edit-note">Edit Note</button>
-                    <button className="read">Mark Read</button>
-                    <button className="delete">Delete Book</button>
+                    <button className="save-btn">Save to Reading List</button>
                   </div>
               </div>
             </div>
@@ -46,7 +44,7 @@ const mapStateToProps = (state, props) => {
     return {
         listId,
         listName: list.name,
-        searchResults: Object.keys(list.books).map(bookId =>
+        searResults: Object.keys(list.books).map(bookId =>
               list.books[bookId]
         )
     };
