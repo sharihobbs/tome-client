@@ -1,8 +1,10 @@
-import * as actions from '../actions';
+import {SAVE_BOOK, READ_BOOK, LOGIN_USER, BOOK_SEARCH, DELETE_BOOK} from '../actions';
+
+// import 2nd const too?
 
 const initialState = {
-    readList: {
-        id: 'readList',
+    reading: {
+        id: 'reading',
         name: 'Reading List',
         books: [{
             id: 1111,
@@ -53,8 +55,8 @@ const initialState = {
             note: ''
           }
         ],
-    searResults: {
-        id: 'searResults',
+    results: {
+        id: 'results',
         name: 'Search Results',
         books: [{
             id: 1111,
@@ -109,16 +111,39 @@ const initialState = {
   }
 };
 
-export const tomeReducer = (state=initialState, action) => {
-  if (action.type === actions.SAVE_BOOK) {
-    return Object.assign ({}, state, {
-      books: [...state.books, {
-          book: action.book
-      }]
+
+export default function tomeReducer(state=initialState, action) {
+  if (action.type === SAVE_BOOK) {
+    return Object.assign({}, state, {
+        book: action.book
     });
   }
-  // else if (action.type === actions.READ_BOOK) {
-  //   let
-  // }
+  else if (action.type === READ_BOOK) {
+    return Object.assign({}, state, {
+        book: action.book
+    });
+  }
+  else if (action.type === LOGIN_USER) {
+    return Object.assign({}, state, {
+        user: action.user
+    });
+  }
+  else if (action.type === BOOK_SEARCH) {
+    return Object.assign({}, state, {
+        term: action.term
+    });
+  }
+  else if (action.type === DELETE_BOOK) {
+    return Object.assign({}, state, {
+        book: action.book
+    });
+  }
   return state;
-};
+}
+
+
+
+
+
+
+

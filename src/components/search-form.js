@@ -26,7 +26,8 @@ class SearchForm extends React.Component {
                         <button type="submit" className="terms-btn">Search</button>
                     </form>
                 </div>
-                <SearchResults />
+                <SearchResults
+                    props={initialState} />
             </div>
         );
     }

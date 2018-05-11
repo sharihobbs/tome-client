@@ -5,8 +5,8 @@ import './search-results.css';
 import '../grid.css';
 
 export function SearchResults(props) {
-  const books = props.searResults.map(book =>
-    <li className="search-results-book" key={book.id}>
+  const books = props.results.map(book =>
+    <li className="results" key={book.id}>
       <div className="col-4">
         <div className="book">
           <div className="upper-wrapper">
@@ -31,19 +31,22 @@ export function SearchResults(props) {
 
   return (
     <div className="row">
-      <h1 className="results">Search Results</h1>
-        <ul className="search-results">{books}</ul>
+      <h1>{props.listName}</h1>
+      <ul className="search-results">{books}</ul>
     </div>
   );
 }
 
-const mapStateToProps = state => ({
-    id: state.id,
-    thumbnail: state.thumbnail,
-    title: state.title,
-    author: state.author,
-    isbn: state.isbn,
-    note: state.note
-});
+const mapStateToProps = (state, props) => {
+    const listId = props.match.params.listId;
+    const list = state[listId];
+    return {
+        listId,
+        listName: list.name,
+        results: Object.keys(list.books).map(bookId =>
+            list.emails[bookId]
+        )
+    };
+};
 
 export default connect(mapStateToProps)(SearchResults);

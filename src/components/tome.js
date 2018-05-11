@@ -1,5 +1,6 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Switch} from 'react-router';
 
 import TitleCard from './title-card';
 import Login from './login';
@@ -14,9 +15,9 @@ export default function Tome(props) {
           <Header />
           <main role="main">
             <Route exact path="/" component={TitleCard} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/search" component={SearchForm} />
-            <Route exact path="/readinglist" component={ReadingList} />
+            <Route path="/login" component={Login} />
+            <Route path="/search" component={SearchForm} />
+            <Route path="/readinglist" component={ReadingList} />
           </main>
         </div>
       </Router>

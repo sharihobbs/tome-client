@@ -5,8 +5,8 @@ import './reading-list.css';
 import '../grid.css';
 
 export function ReadingList(props) {
-  const books = props.readList.map(book =>
-    <li className="reading-list-book" key={book.id}>
+  const books = props.reading.map(book =>
+    <li className="reading" key={book.id}>
       <div className="col-4">
         <div className="book">
           <div className="upper-wrapper">
@@ -33,19 +33,22 @@ export function ReadingList(props) {
 
   return (
     <div className="row">
-      <h1 className="results">Reading List</h1>
+      <h1>Reading List</h1>
         <ul className="reading-list">{books}</ul>
     </div>
   );
 }
 
-const mapStateToProps = state => ({
-    id: state.id,
-    thumbnail: state.thumbnail,
-    title: state.title,
-    author: state.author,
-    isbn: state.isbn,
-    note: state.note
-});
+const mapStateToProps = (state, props) => {
+    const listId = props.match.params.listId;
+    const list = state[listId];
+    return {
+        listId,
+        listName: list.name,
+        reading: Object.keys(list.books).map(bookId =>
+            list.emails[bookId]
+        )
+    };
+};
 
 export default connect(mapStateToProps)(ReadingList);
