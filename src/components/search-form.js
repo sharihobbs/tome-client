@@ -1,11 +1,11 @@
 import React from 'react';
-import {reduxForm} from 'redux-form';
+// import {reduxForm} from 'redux-form';
 
 import SearchResults from './search-results';
 import './search-form.css';
 
 
-class SearchForm extends React.Component {
+export default class SearchForm extends React.Component {
   onSubmit(values) {
         console.log(values);
     }
@@ -17,22 +17,14 @@ class SearchForm extends React.Component {
                     <p className="tagline">What do you want to read next?</p>
                 </div>
                 <div className="search-wrapper">
-                    <form className="search-form"
-                        onSubmit={this.props.handleSubmit(values =>
-                        this.onSubmit(values)
-                        )}>
+                    <form className="search-form" onSubmit={(e) => this.search(e)}>
                         <label htmlFor="terms" className="terms">Search for any book by Title, Author, Subject, or ISBN.</label>
-                        <input name="terms" id="terms" className="search-input" type="text" placeholder="Barbara Kingsolver, Rockabye, parenting, etc." />
+                        <input className="search-input" type="search" placeholder="Barbara Kingsolver, Rockabye, parenting, etc." ref={input => this.input} />
                         <button type="submit" className="terms-btn">Search</button>
                     </form>
                 </div>
-                <SearchResults
-                    props={initialState} />
+                <SearchResults />
             </div>
         );
     }
 }
-
-export default reduxForm({
-    form: 'search'
-})(SearchForm);

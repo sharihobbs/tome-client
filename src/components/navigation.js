@@ -15,9 +15,9 @@ export default function Navigation() {
       <a
         href="/readinglist"
         className="list"
-        aria-label="Reading List"
+        aria-label="My Reading List"
       >
-        Reading List{'  '}|{'  '}
+        My Reading List{'  '}|{'  '}
       </a>
       <a
         href="/search"

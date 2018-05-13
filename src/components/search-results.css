@@ -3,15 +3,11 @@
 }
 
 h1 {
-  text-align: left;
-}
-
-.title-wrapper {
   text-align: center;
 }
 
-.hero {
-  text-align: center;
+li, ul {
+  list-style-type: none;
 }
 
 .tome-title {
@@ -45,3 +41,86 @@ h1 {
 .search-form {
   text-align: center;
 }
+
+.book {
+  width: 100%;
+  max-width: 250px;
+  height: 240px;
+  border: solid lightgray;
+  border-width: 1px;
+  border-radius: 3px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  text-align: center;
+}
+
+.upper-wrapper {
+  position: relative;
+  height: 100px;
+}
+
+.img-container {
+  width: 80px;
+  height: 100px;
+  border: 1px solid lightgrey;
+  padding: 0px;
+  float: left;
+  margin: 0 5px 5px 0;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.title {
+  margin: 0;
+  height: 60px;
+  white-space: pre-wrap;
+  overflow: auto;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.author {
+  margin: 5px;
+  font-size: 14px;
+}
+
+.isbn {
+  font-size: 10px;
+}
+
+.note-wrapper {
+  margin-top: 20px;
+  position: absolute;
+}
+
+.note-label {
+  font-size: 14px;
+  display: block;
+  text-align: left;
+  font-weight: bold;
+}
+
+.note {
+  display: block;
+  width: 95%;
+  border-radius: 3px;
+  border-color: lightgray;
+}
+
+.list-title {
+  text-align: left;
+}
+
+
+.btn-wrapper {
+  margin: auto;
+}
+
+

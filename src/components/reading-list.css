@@ -2,16 +2,23 @@
   box-sizing: border-box;
 }
 
+h1 {
+  text-align: center;
+}
+
+li, ul {
+  list-style-type: none;
+}
+
 .book {
   width: 100%;
+  max-width: 250px;
   height: 240px;
   border: solid lightgray;
   border-width: 1px;
   border-radius: 3px;
   background-color: white;
   color: black;
-  margin-left: 3px;
-  margin-right: 3px;
   padding: 10px;
   text-align: center;
 }
@@ -36,13 +43,20 @@
   object-fit: cover;
 }
 
-.title, .author {
-  margin: 0;
-}
-
 .title {
+  margin: 0;
+  height: 60px;
+  white-space: pre-wrap;
+  overflow: auto;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
   font-weight: bold;
   font-size: 16px;
+}
+
+.author {
+  margin: 5px;
+  font-size: 14px;
 }
 
 .isbn {
@@ -63,10 +77,14 @@
 
 .note {
   display: block;
-  margin: auto;
-  width: 100%;
-  height: auto;
+  width: 95%;
   border-radius: 3px;
   border-color: lightgray;
 }
+
+.btn-wrapper {
+  margin: auto;
+}
+
+
 
