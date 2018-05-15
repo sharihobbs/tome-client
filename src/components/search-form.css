@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  text-align: center;
 }
 
 .title-wrapper {
@@ -33,15 +34,13 @@
   display: inline-block;
   margin: 0 auto;
   width: 280px;
+  text-align: left;
 }
 
 .terms-btn {
   margin-left: 5px;
 }
 
-.search-form {
-  text-align: center;
-}
 
 
 

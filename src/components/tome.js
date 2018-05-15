@@ -1,23 +1,35 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-import TitleCard from './title-card';
+// importing router
+import {Router, Route} from 'react-router-dom';
+
+// store imports
+// import {Provider} from 'react-redux';
+//import store, {history} from '../store/configureStore';
+import {history} from '../store/configureStore';
+
+import readingBooks from '../data/reading-books';
+
+
+// importing components
+import Instructions from './instructions';
 import Login from './login';
 import Header from './header';
-import SearchForm from './search-form';
+import SearchPage from './search-page';
 import ReadingList from './reading-list';
+
 
 export default function Tome() {
     return (
-      <Router>
+      <Router history={history}>
         <div>
-          <Header />
-          <main role="main">
-            <Route exact path="/" component={TitleCard} />
+            <Header />
+            <Route exact path="/" component={Instructions} />
             <Route path="/login" component={Login} />
-            <Route path="/search" component={SearchForm} />
-            <Route path="/readinglist" component={ReadingList} />
-          </main>
+            <Route path="/search" component={SearchPage} />
+            <Route path="/readinglist" render={(props) => (
+              <ReadingList {...props} readingBooks={readingBooks} />
+              )} />
         </div>
       </Router>
     );
