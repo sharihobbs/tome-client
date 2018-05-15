@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  text-align: center;
 }
 
 .title-wrapper {
@@ -39,9 +40,6 @@
   margin-left: 5px;
 }
 
-.search-form {
-  text-align: center;
-}
 
 
 
