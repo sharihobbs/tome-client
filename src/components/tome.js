@@ -24,9 +24,9 @@ export default function Tome() {
       <Router history={history}>
         <div>
             <Header />
-            <Route path="/" component={Instructions}> </Route>
-            <Route path="/login" component={Login}> </Route>
-            <Route path="/search" component={SearchPage}> </Route>
+            <Route exact path="/" component={Instructions} />
+            <Route path="/login" component={Login} />
+            <Route path="/search" component={SearchPage} />
             <Route path="/readinglist" render={(props) => (
               <ReadingList {...props} readingBooks={readingBooks} />
               )} />

@@ -34,6 +34,7 @@
   display: inline-block;
   margin: 0 auto;
   width: 280px;
+  text-align: left;
 }
 
 .terms-btn {

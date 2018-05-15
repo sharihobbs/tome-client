@@ -7,7 +7,7 @@ import '../grid.css';
 
 function SearchResults(props) {
   console.log('results props:', props);
-  const books = this.props.map(book =>
+  const books = props.resultsBooks.map(book =>
     <li className="results" key={book.id}>
       <div className="col-4">
         <div className="book">
@@ -23,7 +23,7 @@ function SearchResults(props) {
             <label htmlFor="note" className="note-label">Note:</label>
             <textarea rows="4" maxLength="140" className="note"></textarea>
             <div className="btn-wrapper">
-              <button className="save-btn">Save to Reading List</button>
+              <button className="save-btn">Save to My Reading List</button>
             </div>
           </div>
         </div>

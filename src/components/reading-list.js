@@ -7,10 +7,9 @@ import './reading-list.css';
 import '../grid.css';
 
 
-
 function ReadingList(props) {
   console.log('reading props:', props);
-  const books = this.props.books.map(book =>
+  const books = props.readingBooks.map(book =>
     <li className="reading" key={book.id}>
       <div className="col-4">
         <div className="book">
