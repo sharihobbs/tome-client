@@ -4,7 +4,7 @@ import './navigation.css';
 
 export default function Navigation() {
   return (
-    <nav role="navigation">
+    <nav>
       <a
         href="/"
         className="home"
