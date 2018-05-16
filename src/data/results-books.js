@@ -41,7 +41,7 @@ const resultsBooks = [{
           {
             id: 6666,
             thumbnail: 'https://books.google.com/books/content?id=PXa2bby0oQ0C&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE71rsX5V84tAv9CAea9G40jVeu8enNyolJfpn487raB2grLMK7TEH0iS3_zfYz3AgDUt-QuCCGYlxj3x-lfGbKySMMQox3crpTYZsnB-nGqfTxhXIOBdDRVQNXeyDohbWZq1zLcY',
-            title: 'JavaScript: The Good Parts: The Good Parts',
+            title: 'MavaScript: The Good Parts',
             author: 'Douglas Crockford',
             isbn: 9780596554873,
             note: ''
