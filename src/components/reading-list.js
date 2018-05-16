@@ -27,7 +27,7 @@ function ReadingList(props) {
             <div className="btn-wrapper">
               <button className="edit-note">Edit Note</button>
               <button className="read">Mark Read</button>
-              <button className="delete">Delete</button>
+              <button className="delete">Delete Book</button>
             </div>
           </div>
         </div>

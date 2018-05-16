@@ -3,6 +3,16 @@
   text-align: center;
 }
 
+a.terms-btn {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+  color: initial;
+  font-size: 12px;
+  padding: 2px;
+}
+
 .title-wrapper {
   margin-top: 60px;
   text-align: center;

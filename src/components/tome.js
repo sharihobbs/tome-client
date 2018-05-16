@@ -4,11 +4,11 @@ import React from 'react';
 import {Router, Route} from 'react-router-dom';
 
 // store imports
-// import {Provider} from 'react-redux';
-//import store, {history} from '../store/configureStore';
 import {history} from '../store/configureStore';
 
+//mock data import
 import readingBooks from '../data/reading-books';
+import resultsBooks from '../data/results-books';
 
 
 // importing components
@@ -17,6 +17,7 @@ import Login from './login';
 import Header from './header';
 import SearchPage from './search-page';
 import ReadingList from './reading-list';
+import SearchResults from './search-results';
 
 
 export default function Tome() {
@@ -27,6 +28,9 @@ export default function Tome() {
             <Route exact path="/" component={Instructions} />
             <Route path="/login" component={Login} />
             <Route path="/search" component={SearchPage} />
+            <Route path="/results" render={(props) => (
+              <SearchResults {...props} resultsBooks={resultsBooks}/>
+              )} />
             <Route path="/readinglist" render={(props) => (
               <ReadingList {...props} readingBooks={readingBooks} />
               )} />

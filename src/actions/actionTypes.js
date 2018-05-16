@@ -21,3 +21,21 @@ export function deleteBook(bookId) {
     bookId
   }
 }
+
+// Login default user
+export function loginUser(username, password) {
+  return {
+    type: 'LOGIN_USER',
+    username,
+    password
+  }
+}
+
+// Edit Note
+export function editNote(bookId, text) {
+  return {
+    type: 'LOGIN_USER',
+    bookId,
+    text
+  }
+}

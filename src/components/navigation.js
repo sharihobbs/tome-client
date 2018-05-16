@@ -6,6 +6,13 @@ export default function Navigation() {
   return (
     <nav role="navigation">
       <a
+        href="/"
+        className="home"
+        aria-label="Home"
+      >
+        Home{'  '}|{'  '}
+      </a>
+      <a
         href="/login"
         className="login"
         aria-label="Login"

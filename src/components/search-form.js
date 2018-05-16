@@ -3,9 +3,16 @@ import {Field, reduxForm} from 'redux-form';
 
 import './search-form.css';
 
-
 const SearchForm = (props) => {
-    const {handleSubmit, pristine, submitting} = props
+    const {handleSubmit} = props;
+
+    // function onSearch() {
+    //     setTimeout(() => {
+    //         this.setState({results: resultsBooks})
+    //     }, 1000)
+    // }
+    // search={this.onSearch}
+
     console.log('form props:', props);
     return (
         <form onSubmit={handleSubmit}>
@@ -13,7 +20,7 @@ const SearchForm = (props) => {
                 <label htmlFor="terms" className="terms">Search for any book by Title, Author, Subject, or ISBN.</label>
                 <div>
                     <Field className="search-input" component="input" type="text" placeholder="Barbara Kingsolver, Rockabye, parenting, etc." />
-                    <button type="submit" className="terms-btn">Search</button>
+                    <a className="terms-btn" href="/results">Search</a>
                 </div>
             </div>
         </form>
@@ -22,4 +29,5 @@ const SearchForm = (props) => {
 
 export default reduxForm({
     form: 'search'
-})(SearchForm);
+  }
+)(SearchForm);
