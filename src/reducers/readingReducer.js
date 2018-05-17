@@ -4,8 +4,11 @@
 
 import {READ_BOOK, EDIT_NOTE, DELETE_BOOK} from '../actions/actionTypes';
 
+// import data - mock for now
+import readingBooks from '../data/reading-books';
+
 const initialState = {
-  readingBooks: []
+  readingBooks
 };
 
 export const readingReducer = (state=initialState, action) => {

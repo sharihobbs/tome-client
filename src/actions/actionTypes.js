@@ -2,7 +2,6 @@ export const SAVE_BOOK = 'SAVE_BOOK';
 export const READ_BOOK = 'READ_BOOK';
 export const DELETE_BOOK = 'DELETE_BOOK';
 export const EDIT_NOTE = 'EDIT_NOTE';
-export const SET_LOGIN_PENDING = 'SET_LOGIN_PENDING';
 export const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
 export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 
@@ -31,7 +30,7 @@ export const editNote = (bookId, text) => ({
   text
 })
 
-// Login reducers
+// Login actions
 export const setLoginSuccess = isLoginSuccess => ({
   type: SET_LOGIN_SUCCESS,
   isLoginSuccess
@@ -41,3 +40,4 @@ export const setLoginError = loginError => ({
   type: SET_LOGIN_ERROR,
   loginError
 })
+

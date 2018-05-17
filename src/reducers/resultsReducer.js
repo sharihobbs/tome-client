@@ -4,8 +4,11 @@
 
 import {SAVE_BOOK} from '../actions/actionTypes';
 
+// import data - mock for now
+import resultsBooks from '../data/results-books';
+
 const initialState = {
-  resultsBooks: []
+  resultsBooks
 };
 
 export const resultsReducer = (state=initialState, action) => {

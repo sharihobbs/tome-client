@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-form {
+form[name="loginForm"] {
   display: flex;
   flex-direction: column;
   width: 450px;
@@ -16,7 +16,7 @@ form {
   margin-bottom: 10px;
 }
 
-label {
+.login-label {
   min-width: 180px;
   width: 180px;
   font-size: 20px;

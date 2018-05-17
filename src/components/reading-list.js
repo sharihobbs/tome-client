@@ -1,11 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-//import readingBooks from '../data/reading-books';
-
 
 import './reading-list.css';
 import '../grid.css';
-
 
 function ReadingList(props) {
   console.log('reading props:', props);
@@ -23,7 +20,7 @@ function ReadingList(props) {
           </div>
           <div className="note-wrapper">
             <label htmlFor="note" className="note-label">Note:</label>
-            <textarea rows="4" maxLength="140" className="note">{book.note}</textarea>
+            <textarea rows="4" maxLength="140" className="note" defaultValue={book.note}></textarea>
             <div className="btn-wrapper">
               <button className="edit-note">Edit Note</button>
               <button className="read">Mark Read</button>
