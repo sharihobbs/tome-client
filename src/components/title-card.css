@@ -9,12 +9,12 @@
 
 .tome-title {
   font-family: 'Permanent Marker', cursive;
-  font-size: 48px;
   margin-bottom: 0;
+  font-size: 65px;
 }
 
 .tagline {
-  font-size: 20px;
   margin-top: 0;
   font-family: 'Ovo', serif;
+  font-size: 25px;
 }

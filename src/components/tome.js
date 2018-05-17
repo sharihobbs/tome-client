@@ -13,7 +13,7 @@ import resultsBooks from '../data/results-books';
 
 // importing components
 import Instructions from './instructions';
-import Login from './login';
+import LoginForm from './login';
 import Header from './header';
 import SearchPage from './search-page';
 import ReadingList from './reading-list';
@@ -26,7 +26,7 @@ export default function Tome() {
         <div>
             <Header />
             <Route exact path="/" component={Instructions} />
-            <Route path="/login" component={Login} />
+            <Route path="/login" component={LoginForm} />
             <Route path="/search" component={SearchPage} />
             <Route path="/results" render={(props) => (
               <SearchResults {...props} resultsBooks={resultsBooks}/>
