@@ -9,6 +9,7 @@
     "react-background-image-loader": "0.0.5",
     "react-dom": "^16.3.2",
     "react-fontawesome": "^1.6.1",
+    "react-popup": "^0.9.2",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
@@ -17,7 +18,9 @@
     "redux": "^4.0.0",
     "redux-form": "^7.3.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "sweetalert-react": "^0.4.11",
+    "sweetalert2-react": "^0.7.2"
   },
   "scripts": {
     "start": "react-scripts start",

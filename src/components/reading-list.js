@@ -1,11 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import LoginForm from './login';
+
 import './reading-list.css';
 import '../grid.css';
 
 function ReadingList(props) {
   console.log('reading props:', props);
+  // console.log('state:', this.state);
+  // const isLoggedIn = this.state.isLoginSuccess;
   const books = props.readingBooks.map(book =>
     <li className="reading" key={book.id}>
       <div className="col-4">
@@ -32,12 +36,16 @@ function ReadingList(props) {
     </li>
   );
 
-  return (
-    <div className="row">
-      <h1 className="list-title"> My Reading List</h1>
-        <ul className="reading-list">{books}</ul>
-    </div>
-  );
+  // if (isLoggedIn) {
+    return (
+      <div className="row">
+        <h1 className="list-title"> My Reading List</h1>
+          <ul className="reading-list">{books}</ul>
+      </div>
+    );
+  // } else {
+  //   return <LoginForm />
+  // }
 }
 
 const mapStateToProps = (state, props) => {

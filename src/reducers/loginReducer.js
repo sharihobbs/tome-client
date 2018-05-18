@@ -6,11 +6,10 @@ export function login(email, password) {
     dispatch(setLoginError(null));
 
     makeLoginCall(email, password, error => {
-      if (!error) {
-        dispatch(setLoginSuccess(true));
-      } else {
-        dispatch(setLoginError(error));
+      if (error) {
+        return dispatch(setLoginError(error));
       }
+      return dispatch(setLoginSuccess(true));
     });
   }
 }
@@ -20,11 +19,10 @@ function makeLoginCall(email, password, callback) {
     if (email === 'reader@tome.com' && password === 'reader') {
       return callback(null);
     } else {
-      return callback(new Error('Invalid email and password'));
+      alert('Invalid email and password');
     }
   }, 100);
 }
-
 
 export default function loginReducer(state = {
   isLoginSuccess: false,
@@ -34,6 +32,7 @@ export default function loginReducer(state = {
 
     case SET_LOGIN_SUCCESS:
       return Object.assign({}, state, {
+        redirectToReferrer: true,
         isLoginSuccess: action.isLoginSuccess
       });
 
