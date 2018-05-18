@@ -10,7 +10,7 @@ import {
 import {history} from '../store/configureStore';
 
 // import mock data
-//import readingBooks from '../data/reading-books';
+// import readingBooks from '../data/reading-books';
 import resultsBooks from '../data/results-books';
 
 // import components
@@ -39,3 +39,9 @@ export default function Tome() {
     </Router>
   );
 }
+
+
+
+// <PrivateRoute path="/" render={(props) => (
+// <ReadingList {...props} readingBooks={readingBooks}/>
+// )} /> /}

@@ -6,13 +6,6 @@ import './search-form.css';
 const SearchForm = (props) => {
     const {handleSubmit} = props;
 
-    // function onSearch() {
-    //     setTimeout(() => {
-    //         this.setState({results: resultsBooks})
-    //     }, 1000)
-    // }
-    // search={this.onSearch}
-
     console.log('form props:', props);
     return (
         <form onSubmit={handleSubmit}>

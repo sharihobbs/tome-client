@@ -11,7 +11,7 @@ const initialState = {
   readingBooks
 };
 
-export const readingReducer = (state=initialState, action) => {
+export default function readingReducer(state=initialState, action) {
   if (action.type === READ_BOOK) {
     console.log(`action: ${JSON.stringify(action)}`)
     return Object.assign({}, state, {
@@ -30,7 +30,5 @@ export const readingReducer = (state=initialState, action) => {
       items: state.readingBooks.filter(book => book.id !== action.book.id)
     });
   }
-  return state
-};
-
-export default readingReducer;
+  return state;
+}
