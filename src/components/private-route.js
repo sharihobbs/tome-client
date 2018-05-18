@@ -5,31 +5,29 @@ import {
   Redirect
 } from 'react-router-dom';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 
-const PrivateRoute = ({ component: Component, auth: auth, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-        (<Component {...props} />)
-      // auth.isAuthenticated === true ? (
-      //   <Component {...props} />
-      // ) : (
-      //   <Redirect to="/login" />
-      // )
-    }
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => {
+    console.log(`PrivateRoute rest.isLoginSuccess: ${JSON.stringify(rest.isLoginSuccess)}`)
+    console.log(`PrivateRoute props: ${JSON.stringify(props)}`)
+    return rest.isLoginSuccess === true ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="/login" />
+      )
+    }}
   />
 );
 
-PrivateRoute.propTypes = {
-  auth: PropTypes.object.isRequired
-};
-
 const mapStateToProps = (state) => {
-  return {
-    auth: state.isLoginSuccess,
-    loginError: state.loginError
-  };
+    console.log(`isLoginSuccess: ${JSON.stringify(state.loginReducer.isLoginSuccess)}`)
+    return {
+        isLoginSuccess: state.loginReducer.isLoginSuccess,
+        loginError: state.loginError
+    };
 }
 
-export default connect(mapStateToProps)(PrivateRoute);
+export default connect(mapStateToProps, null, null, {
+  pure: false
+})(PrivateRoute);
+

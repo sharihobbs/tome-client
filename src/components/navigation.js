@@ -6,7 +6,7 @@ export default function Navigation() {
   return (
     <nav>
       <a
-        href="/"
+        href="/home"
         className="home"
         aria-label="Home"
       >

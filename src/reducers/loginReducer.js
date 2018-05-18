@@ -32,7 +32,6 @@ export default function loginReducer(state = {
 
     case SET_LOGIN_SUCCESS:
       return Object.assign({}, state, {
-        redirectToReferrer: true,
         isLoginSuccess: action.isLoginSuccess
       });
 

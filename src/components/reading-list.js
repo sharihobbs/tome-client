@@ -59,4 +59,6 @@ const mapStateToProps = (state, props) => {
     }
 };
 
-export default connect(mapStateToProps)(ReadingList);
+export default connect(mapStateToProps, null, null, {
+  pure: false
+})(ReadingList);
