@@ -1,17 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
+import {bindActionCreators} from 'redux';
+import {deleteBook} from '../actions/actionTypes';
 import './reading-list.css';
 import '../grid.css';
 
 class ReadingList extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-  console.log('reading props:', this.props);
     const books = this.props.readingBooks.map(book =>
       <li className="reading" key={book.id}>
         <div className="col-4">
@@ -28,9 +23,7 @@ class ReadingList extends React.Component {
               <label htmlFor="note" className="note-label">Note:</label>
               <textarea rows="4" maxLength="140" className="note" defaultValue={book.note}></textarea>
               <div className="btn-wrapper">
-                <button className="edit-note">Edit Note</button>
-                <button className="read">Mark Read</button>
-                <button className="delete">Delete Book</button>
+                <button className="delete" onClick={() => this.props.deleteBook(book)}>Remove Book</button>
               </div>
             </div>
           </div>
@@ -38,29 +31,26 @@ class ReadingList extends React.Component {
       </li>
     );
 
-      return (
-        <div className="row">
-          <h1 className="list-title"> My Reading List</h1>
-            <ul className="reading-list">{books}</ul>
-        </div>
-      );
+    return (
+      <div className="row">
+        <h1 className="list-title"> My Reading List</h1>
+        <ul className="reading-list">{books}</ul>
+      </div>
+    );
   }
 }
 
-const mapStateToProps = (state, props) => {
-    console.log('state', state);
-    return {
-      readingBooks: state.readingReducer.readingBooks
-    }
-};
+function mapStateToProps(state) {
+  return {
+    isLoginSuccess: state.loginReducer.isLoginSuccess,
+    loginError: state.loginReducer.loginError,
+    readingBooks: state.booksReducer.readingBooks
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({deleteBook: deleteBook}, dispatch)
+}
 
 
-export default connect(mapStateToProps, null, null, {
-  pure: false
-})(ReadingList);
-
-
-//export default connect(mapStateToProps)(ReadingList);
-
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(ReadingList);

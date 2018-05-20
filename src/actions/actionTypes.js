@@ -1,33 +1,34 @@
+export const SEARCH_BOOK = 'SEARCH_BOOK';
 export const SAVE_BOOK = 'SAVE_BOOK';
-export const READ_BOOK = 'READ_BOOK';
 export const DELETE_BOOK = 'DELETE_BOOK';
-export const EDIT_NOTE = 'EDIT_NOTE';
 export const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
 export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
+// export const SAVE_NOTE = 'SAVE_NOTE';
+
+// Search for Books
+export const searchBook = terms => ({
+  type: SEARCH_BOOK,
+  terms
+})
 
 // Save a book from the search results
-export const saveBook = book => ({
-  type: SAVE_BOOK,
-  book
-})
+export const saveBook = book => {
+  return ({
+    type: SAVE_BOOK,
+    book
+  })
+}
 
-// Mark a book as read
-export const readBook = bookId => ({
-  type: READ_BOOK,
-  bookId
-})
+// // Save note value to state
+// export const saveNote = text => ({
+//   type: SAVE_NOTE,
+//   text
+// })
 
 // Delete a book from the reading list
-export const deleteBook = bookId => ({
+export const deleteBook = book => ({
   type: DELETE_BOOK,
-  bookId
-})
-
-// Edit Note
-export const editNote = (bookId, text) => ({
-  type: EDIT_NOTE,
-  bookId,
-  text
+  book
 })
 
 // Login actions

@@ -7,10 +7,9 @@ import {
 } from 'react-router-dom';
 
 // store imports
-import {history} from '../store/configureStore';
+import {history} from '../support/history';
 
 // import mock data
-// import readingBooks from '../data/reading-books';
 import resultsBooks from '../data/results-books';
 
 // import components
@@ -23,25 +22,23 @@ import ReadingList from './reading-list';
 import SearchResults from './search-results';
 
 
-export default function Tome() {
-  return (
-    <Router history={history}>
-      <div>
-          <Header/>
-          <PrivateRoute path="/" component={ReadingList} />
-          <Route path="/home" component={Instructions} />
-          <Route path="/login" component={LoginForm} />
-          <Route path="/search" component={SearchPage} />
-          <Route path="/results" render={(props) => (
-            <SearchResults {...props} resultsBooks={resultsBooks}/>
-            )} />
-      </div>
-    </Router>
-  );
+class Tome extends React.Component {
+  render() {
+    return (
+      <Router history={history}>
+        <div>
+            <Header/>
+            <Route exact path="/" component={Instructions} />
+            <Route exact path="/login" component={LoginForm} />
+            <PrivateRoute exact path="/readinglist" component={ReadingList} />
+            <PrivateRoute exact path="/search" component={SearchPage} />
+            <Route exact path="/results" render={(props) => (
+              <SearchResults {...props} resultsBooks={resultsBooks}/>
+              )} />
+        </div>
+      </Router>
+    )
+  }
 }
 
-
-
-// <PrivateRoute path="/" render={(props) => (
-// <ReadingList {...props} readingBooks={readingBooks}/>
-// )} /> /}
+export { Tome as App };

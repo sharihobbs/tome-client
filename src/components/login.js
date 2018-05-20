@@ -1,19 +1,9 @@
 import React from 'react';
-
 import {Redirect} from 'react-router-dom';
-
-// import connect for mapping state to props
 import {connect} from 'react-redux';
-
-// import login function from the reducer
 import {login} from '../reducers/loginReducer';
-
-// import TitleCard to show above login form
 import TitleCard from './title-card';
-
-// import css for login form
 import './login.css';
-
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -27,14 +17,7 @@ class LoginForm extends React.Component {
 
   render() {
     const {email, password} = this.state;
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
-    const { redirectToReferrer } = this.state;
-
-    if (redirectToReferrer) {
-      return <Redirect to={from} />;
-    }
-
-    return (
+    const loginForm = (
       <div><TitleCard />
         <form name="loginForm" onSubmit={this.onSubmit}>
           <div className="form-group-collection">
@@ -52,13 +35,17 @@ class LoginForm extends React.Component {
         </form>
       </div>
     )
+
+    if (this.props.isLoginSuccess === true) {
+      return (<Redirect push from='/login' to='/readinglist' />)
+    }
+    return loginForm
   }
 
   onSubmit(e) {
     e.preventDefault();
     let {email, password} = this.state;
     this.props.login(email, password);
-    console.log('em and pw on login:', email, password);
     this.setState({
       email: '',
       password: ''
@@ -68,8 +55,8 @@ class LoginForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isLoginSuccess: state.isLoginSuccess,
-    loginError: state.loginError
+    isLoginSuccess: state.loginReducer.isLoginSuccess,
+    loginError: state.loginReducer.loginError
   };
 }
 
@@ -79,6 +66,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, null, {
-  pure: false
-})(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
