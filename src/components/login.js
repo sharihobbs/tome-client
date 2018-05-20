@@ -22,12 +22,12 @@ class LoginForm extends React.Component {
         <form name="loginForm" onSubmit={this.onSubmit}>
           <div className="form-group-collection">
             <div className="form-group">
-              <label className="login-label">Email</label>
+              <label className="login-label">Email:</label>
               <input type="email" className="email" name="email" placeholder="amanda@gmail.com" onChange={e => this.setState({email: e.target.value})} value={email}/>
             </div>
 
             <div className="form-group">
-              <label className="login-label">Password</label>
+              <label className="login-label">Password:</label>
               <input type="password" className="password" name="password" placeholder="i<3toreadbo0ks" onChange={e => this.setState({password: e.target.value})} value={password}/>
             </div>
           </div>

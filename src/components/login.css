@@ -7,7 +7,7 @@ form[name="loginForm"] {
   flex-direction: column;
   width: 450px;
   padding: 5px;
-  margin-left: 20%;
+  margin-left: 30%;
 }
 
 .form-group {
