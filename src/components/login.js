@@ -33,6 +33,9 @@ class LoginForm extends React.Component {
           </div>
           <input type="submit" className="login-btn" value="Login"  />
         </form>
+        <div>
+        <p>Demo Account | Email: reader@tome.com | Password: reader</p>
+        </div>
       </div>
     )
 
