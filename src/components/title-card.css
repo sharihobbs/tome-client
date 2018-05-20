@@ -5,16 +5,17 @@
 .hero {
   text-align: center;
   margin-top: 60px;
+  margin-bottom: 30px;
 }
 
 .tome-title {
   font-family: 'Permanent Marker', cursive;
-  font-size: 48px;
   margin-bottom: 0;
+  font-size: 60px;
 }
 
 .tagline {
-  font-size: 20px;
   margin-top: 0;
   font-family: 'Ovo', serif;
+  font-size: 20px;
 }

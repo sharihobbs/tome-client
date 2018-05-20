@@ -1,30 +1,21 @@
-import {createStore} from 'redux';
-import {syncHistoryWithStore} from 'react-router-redux'
-import createBrowserHistory from '../components/history';
+import {createStore, applyMiddleware} from 'redux';
 
-// import Thunk
-// import thunk from 'redux-thunk';
-  //applyMiddleware(thunk),
+// import Thunk and Logger
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
 
 // import root reducer
 import rootReducer from '../reducers/index';
 
-// import data - mock for now
-import readingBooks from '../data/reading-books';
-import resultsBooks from '../data/results-books';
-
-// create an object for the default data
-const initialState = {
-  readingBooks,
-  resultsBooks
-};
+const loggerMiddleware = createLogger();
 
 export const store = createStore(
   rootReducer,
-  initialState
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(
+      thunkMiddleware,
+      loggerMiddleware
+    )
   );
-
-export const history = syncHistoryWithStore(createBrowserHistory, store);
-
 
 export default store;

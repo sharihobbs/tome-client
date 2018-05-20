@@ -1,13 +1,13 @@
 import React from 'react';
 import TitleCard from './title-card';
-
 import './instructions.css';
 import '../grid.css';
 
-export default function Instructions() {
-  return (
-    <div>
-      <TitleCard />
+class Instructions extends React.Component {
+
+  render() {
+    return (
+      <div><TitleCard />
       <div className="row">
         <div className="col-4">
           <section className="card">
@@ -21,10 +21,13 @@ export default function Instructions() {
         </div>
         <div className="col-4">
           <section className="card">
-            <p>Change your mind about a book? No problem, you can easily delete books from your Reading List. Or if it was love at first page turn, mark it as read when done.</p>
+            <p>Change your mind about a book? You can easily remove books from your Reading List. Or if it was love at first page turn, you can remove it from your list after reading.</p>
           </section>
         </div>
       </div>
-    </div>
-  )
+      </div>
+    );
+  }
 }
+
+export default Instructions;

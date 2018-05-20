@@ -2,15 +2,17 @@ import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
 import {reducer as reducerForm} from 'redux-form';
 
-import readingBooks from './reading-books';
-import resultsBooks from './results-books';
-import loginUser from './login-user';
+// import all reducers
+//import searchReducer from './searchReducer';
+import booksReducer from './booksReducer';
+import loginReducer from './loginReducer';
 
 const rootReducer = combineReducers({
-  readingBooks,
-  resultsBooks,
-  loginUser,
+  //searchReducer,
+  booksReducer,
+  loginReducer,
   form: reducerForm,
-  routing: routerReducer});
+  routing: routerReducer
+});
 
 export default rootReducer;

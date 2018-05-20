@@ -18,26 +18,9 @@ a.terms-btn {
   text-align: center;
 }
 
-.hero {
-  text-align: center;
-}
-
-.tome-title {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 48px;
-  margin-bottom: 0;
-}
-
-.tagline {
-  font-size: 20px;
-  margin-top: 0;
-  font-family: 'Ovo', serif;
-  margin-bottom: 60px;
-}
-
 .terms {
-  display: block;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .search-input {
