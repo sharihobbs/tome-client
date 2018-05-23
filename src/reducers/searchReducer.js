@@ -1,16 +1,22 @@
-import {SEARCH_BOOK} from '../actions/actionTypes';
+import {SEARCH_BOOK_SUCCESS, SEARCH_BOOK_ERROR} from '../actions/actionTypes';
 
 const initialState = {
-  terms: ''
+  resultsBooks: []
 };
 
 export const searchReducer = (state=initialState, action) => {
-  if (action.type === SEARCH_BOOK) {
-    // return Object.assign({}, state, {
-    //   terms: [...state.terms, action.terms]
-    // });
+  switch (action.type) {
+    case SEARCH_BOOK_ERROR:
+      return Object.assign({}, state, {
+        searchBookError: action.searchBookError
+      });
+    case SEARCH_BOOK_SUCCESS:
+      return Object.assign({}, state, {
+        resultsBooks: action.books
+      })
+    default:
+      return state;
   }
-  return state
 };
 
 export default searchReducer;

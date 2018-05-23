@@ -1,15 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {saveBook} from '../actions/actionTypes';
+import {addBook} from '../actions/index';
 import './search-results.css';
 import '../grid.css';
 import _ from 'lodash';
 
 class SearchResults extends React.Component {
-constructor(props) {
+  constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      note: ''
+    }
+  }
+
+  onSave(book) {
+    console.log('book.note:', book.note)
+    this.props.dispatch(addBook(book))
   }
 
   render() {
@@ -22,14 +28,14 @@ constructor(props) {
                 <img src={book.thumbnail} className="thumbnail" alt={book.title}></img>
               </div>
                 <p className="title">{book.title}</p>
-                <p className="author">{book.author}</p>
-                <p className="isbn">ISBN: {book.isbn}</p>
+                <p className="author">{book.authors && book.authors.join(', ')}</p>
+                <p className="isbn">ISBN: {book.industryIdentifiers[0].identifier}</p>
             </div>
             <div className="note-wrapper">
               <label htmlFor="note" className="note-label">Note:</label>
               <textarea name="note" rows="4" maxLength="140" className="new-note" onChange={(e) => this.setState({note: e.target.value})}></textarea>
               <div className="btn-wrapper">
-                <button className="save-btn" onClick={() => this.props.saveBook(_.merge({}, book, {note: this.state.note}))}>Save to My Reading List</button>
+                <button className="save-btn" onClick={() => this.onSave(_.merge({}, book, {note: this.state.note}))}>Save to My Reading List</button>
               </div>
             </div>
           </div>
@@ -48,13 +54,8 @@ constructor(props) {
 
 function mapStateToProps(state) {
   return {
-    resultsBooks: state.booksReducer.resultsBooks
+    resultsBooks: state.searchReducer.resultsBooks
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({saveBook: saveBook}, dispatch)
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);
+export default connect(mapStateToProps)(SearchResults);

@@ -1,11 +1,23 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {deleteBook} from '../actions/actionTypes';
+import {fetchReadingList, deleteBook} from '../actions/index';
 import './reading-list.css';
 import '../grid.css';
 
 class ReadingList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onDelete = this.onDelete.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.dispatch(fetchReadingList())
+  }
+
+  onDelete(book) {
+    this.props.dispatch(deleteBook(book))
+  }
+
   render() {
     const books = this.props.readingBooks.map(book =>
       <li className="reading" key={book.id}>
@@ -23,7 +35,7 @@ class ReadingList extends React.Component {
               <label htmlFor="note" className="note-label">Note:</label>
               <textarea rows="4" maxLength="140" className="note" defaultValue={book.note}></textarea>
               <div className="btn-wrapper">
-                <button className="delete" onClick={() => this.props.deleteBook(book)}>Remove Book</button>
+                <button className="delete" onClick={() => this.onDelete(book)}>Remove Book</button>
               </div>
             </div>
           </div>
@@ -48,9 +60,4 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({deleteBook: deleteBook}, dispatch)
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(ReadingList);
+export default connect(mapStateToProps)(ReadingList);
