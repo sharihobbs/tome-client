@@ -5,9 +5,8 @@
 form[name="loginForm"] {
   display: flex;
   flex-direction: column;
-  width: 450px;
-  padding: 5px;
-  margin-left: 30%;
+  width: 300px;
+  margin: auto;
 }
 
 .form-group {
@@ -17,8 +16,8 @@ form[name="loginForm"] {
 }
 
 .login-label {
-  min-width: 180px;
-  width: 180px;
+  min-width: 80px;
+  width: 80px;
   font-size: 20px;
   text-align: right;
   margin-right: 5px;
@@ -34,6 +33,10 @@ form[name="loginForm"] {
   text-align: left;
 }
 
+::placeholcer {
+  color: lightgray;
+}
+
 .login-btn {
   align-self: flex-end;
   width: 80px;
@@ -42,5 +45,11 @@ form[name="loginForm"] {
   border-radius: 3px;
   font-size: 18px;
   background: white;
+  margin-bottom: 20px;
+}
+
+.demo {
+  font-weight: bolder;
+  line-height: 5px;
 }
 

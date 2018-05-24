@@ -7,11 +7,14 @@ export const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
 export const FETCH_READING_LIST_SUCCESS = 'FETCH_READING_LIST_SUCCESS';
 export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 export const USER_LOGOUT = 'USER_LOGOUT';
+export const RESET = 'RESET';
+
 
 // Handle success on book search
-export const searchBookSuccess = books => ({
+export const searchBookSuccess = (books, term) => ({
   type: SEARCH_BOOK_SUCCESS,
-  books
+  books,
+  term
 })
 
 // Handle error on book search
@@ -39,10 +42,13 @@ export const deleteBookSuccess = book => ({
 })
 
 // Login success
-export const setLoginSuccess = isLoginSuccess => ({
-  type: SET_LOGIN_SUCCESS,
-  isLoginSuccess
-})
+export const setLoginSuccess = isLoginSuccess => {
+  localStorage.setItem('user', JSON.stringify({isLoginSuccess}));
+  return ({
+    type: SET_LOGIN_SUCCESS,
+    isLoginSuccess
+  })
+}
 
 // Login error
 export const setLoginError = loginError => ({
@@ -54,4 +60,10 @@ export const setLoginError = loginError => ({
 export const userLogout = isLogout => ({
   type: USER_LOGOUT,
   isLogout
+})
+
+// Reset resultsBooks to initial state
+export const reset = initialState => ({
+  type: RESET,
+  initialState
 })

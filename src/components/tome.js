@@ -7,6 +7,7 @@ import {history} from '../support/history';
 import PrivateRoute from './private-route';
 import Instructions from './instructions';
 import LoginForm from './login';
+import Logout from './logout';
 import Header from './header';
 import SearchPage from './search-page';
 import ReadingList from './reading-list';
@@ -21,6 +22,7 @@ class Tome extends React.Component {
             <Header/>
             <Route exact path="/" component={Instructions} />
             <Route exact path="/login" component={LoginForm} />
+            <Route exact path="/logout" component={Logout} />
             <PrivateRoute exact path="/readinglist" component={ReadingList} />
             <PrivateRoute exact path="/search" component={SearchPage} />
             <PrivateRoute exact path="/results" component={SearchResults} />

@@ -26,8 +26,12 @@ a.terms-btn {
 .search-input {
   display: inline-block;
   margin: 0 auto;
-  width: 280px;
+  width: 230px;
   text-align: left;
+}
+
+::placeholder {
+  color: lightgray;
 }
 
 .terms-btn {

@@ -5,6 +5,7 @@
 .card {
   width: 100%;
   min-height: 160px;
+  max-width: 240px;
   border: solid #006C7F;
   border-width: 1px;
   border-radius: 3px;
