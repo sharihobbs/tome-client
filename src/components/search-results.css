@@ -2,14 +2,13 @@
   box-sizing: border-box;
 }
 
-h1 {
-  text-align: center;
-}
-
 li, ul {
   list-style-type: none;
 }
 
+.results {
+  margin-top: 40px;
+}
 
 .book {
   width: 100%;

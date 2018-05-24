@@ -33,7 +33,7 @@ class ReadingList extends React.Component {
             </div>
             <div className="note-wrapper">
               <label htmlFor="note" className="note-label">Note:</label>
-              <textarea rows="4" maxLength="140" className="note" defaultValue={book.note}></textarea>
+              <p className="note">{book.note}</p>
               <div className="btn-wrapper">
                 <button className="delete" onClick={() => this.onDelete(book)}>Remove Book</button>
               </div>

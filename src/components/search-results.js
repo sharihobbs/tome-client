@@ -1,6 +1,7 @@
 import React from 'react';
+import BottomScrollListener from 'react-bottom-scroll-listener';
 import {connect} from 'react-redux';
-import {addBook} from '../actions/index';
+import {addBook, bookSearch} from '../actions/index';
 import './search-results.css';
 import '../grid.css';
 import _ from 'lodash';
@@ -9,12 +10,19 @@ class SearchResults extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      note: ''
+      note: '',
+      page: 1
     }
+    this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  handleScroll() {
+    let nextPage = this.state.page + 1
+    this.setState({page: nextPage})
+    this.props.dispatch(bookSearch(this.props.searchTerm, this.state.page));
   }
 
   onSave(book) {
-    console.log('book.note:', book.note)
     this.props.dispatch(addBook(book))
   }
 
@@ -29,7 +37,7 @@ class SearchResults extends React.Component {
               </div>
                 <p className="title">{book.title}</p>
                 <p className="author">{book.authors && book.authors.join(', ')}</p>
-                <p className="isbn">ISBN: {book.industryIdentifiers[0].identifier}</p>
+                <p className="isbn">ISBN: {book.industryIdentifiers && book.industryIdentifiers[0].identifier}</p>
             </div>
             <div className="note-wrapper">
               <label htmlFor="note" className="note-label">Note:</label>
@@ -45,8 +53,8 @@ class SearchResults extends React.Component {
 
     return (
       <div className="row">
-        <h1 className="list-title">Search Results</h1>
         <ul className="search-results">{books}</ul>
+        <BottomScrollListener onBottom={this.handleScroll} />
       </div>
     );
   }
@@ -54,7 +62,8 @@ class SearchResults extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    resultsBooks: state.searchReducer.resultsBooks
+    resultsBooks: state.searchReducer.resultsBooks,
+    searchTerm: state.searchReducer.term
   };
 }
 

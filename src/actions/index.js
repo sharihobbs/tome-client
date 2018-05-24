@@ -3,7 +3,9 @@ import {
   fetchReadingListSuccess,
   deleteBookSuccess,
   searchBookSuccess,
-  addBookSuccess
+  addBookSuccess,
+  setLoginSuccess,
+  setLoginError
 } from './actionTypes';
 
 export const fetchReadingList = () => dispatch => {
@@ -26,8 +28,7 @@ export const deleteBook = (book) => dispatch => {
   .then(dispatch(deleteBookSuccess(book)))
 };
 
-export const bookSearch = (term) => dispatch => {
-  console.log('term', term)
+export const bookSearch = (term, page) => dispatch => {
   fetch(`${API_BASE_URL}/search`, {
     method: 'POST',
     headers: {
@@ -35,7 +36,8 @@ export const bookSearch = (term) => dispatch => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      query: term
+      query: term,
+      page: page
     })
   })
   .then(res => {
@@ -45,8 +47,7 @@ export const bookSearch = (term) => dispatch => {
     return res.json();
   })
   .then(results => {
-    console.log('results:', results)
-    dispatch(searchBookSuccess(results))
+    dispatch(searchBookSuccess(results, term))
   })
 };
 
@@ -72,8 +73,42 @@ export const addBook = (book) => dispatch => {
     }
     return res.json();
   })
-  .then(results => {
-    console.log('results:', results)
+  .then(() => {
     dispatch(addBookSuccess(book))
   })
 };
+
+export const login = (email, password) => dispatch => {
+  dispatch(setLoginSuccess(false));
+  dispatch(setLoginError(null));
+
+  makeLoginCall(email, password, error => {
+    if (error) {
+      return dispatch(setLoginError(error));
+    } else {
+      return dispatch(setLoginSuccess(true));
+    }
+  });
+}
+
+export const isLoggedIn = () => dispatch => {
+  let user = JSON.parse(localStorage.getItem('user'));
+  if (user.isLoginSuccess === true) {
+    return dispatch(setLoginSuccess(true))
+  }
+}
+
+export const logout = () => dispatch => {
+  localStorage.removeItem('user');
+  return dispatch(setLoginSuccess(false))
+}
+
+function makeLoginCall(email, password, callback) {
+  setTimeout(() => {
+    if (email === 'reader@tome.com' && password === 'reader') {
+      return callback(null);
+    } else {
+      return callback(new Error('Invalid email and password'))
+    }
+  }, 100);
+}

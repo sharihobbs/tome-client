@@ -20,20 +20,19 @@ class SearchForm extends React.Component {
 
   render() {
     const {query} = this.state;
-    const searchForm = (
+    return (
     <form name="searchForm" onSubmit={this.onSubmit}>
         <div className="search-collection">
             <div className="label-container">
                 <label htmlFor="terms" className="terms">Search for any book by Title, Author, Subject, or ISBN.</label>
             </div>
             <div className="input-container">
-                <input id="terms" name="terms" className="search-input" component="input" type="text" placeholder="Barbara Kingsolver, Rockabye, parenting, etc." onChange={e => this.setState({query: e.target.value})} value={query}/>
+                <input id="terms" name="terms" className="search-input" component="input" type="text" placeholder="Paula Hawkins, Cell, parenting, etc." onChange={e => this.setState({query: e.target.value})} value={query}/>
                 <input type="submit" className="terms-btn" value="Search" />
             </div>
         </div>
     </form>
     )
-    return searchForm
   }
 }
 

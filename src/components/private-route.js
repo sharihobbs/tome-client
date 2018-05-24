@@ -14,10 +14,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 const mapStateToProps = (state) => {
-    return {
-        isLoginSuccess: state.loginReducer.isLoginSuccess,
-        loginError: state.loginError
-    };
+  return {
+    isLoginSuccess: state.loginReducer.isLoginSuccess,
+    loginError: state.loginError
+  };
 }
 
 export default connect(mapStateToProps, null, null, {

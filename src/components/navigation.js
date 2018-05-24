@@ -22,6 +22,13 @@ class Navigation extends React.Component {
           Login{'  '}|{'  '}
         </Link>
         <Link
+          to="/logout"
+          className="logout"
+          aria-label="Logout"
+        >
+          Logout{'  '}|{'  '}
+        </Link>
+        <Link
           to="/readinglist"
           className="list"
           aria-label="My Reading List"
