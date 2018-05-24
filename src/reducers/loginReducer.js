@@ -3,11 +3,13 @@ import {
   SET_LOGIN_ERROR
 } from '../actions/actionTypes';
 
-export default function loginReducer(state = {
+const initialState = {
   isLoginSuccess: false,
   loginError: null,
   isLogOut: true
-}, action) {
+}
+  
+export default function loginReducer(state = initialState, action) {
   switch (action.type) {
     case SET_LOGIN_SUCCESS:
       return Object.assign({}, state, {
