@@ -5,7 +5,8 @@ import {
   searchBookSuccess,
   addBookSuccess,
   setLoginSuccess,
-  setLoginError
+  setLoginError,
+  resetResults
 } from './actionTypes';
 
 export const fetchReadingList = () => dispatch => {
@@ -96,6 +97,10 @@ export const isLoggedIn = () => dispatch => {
   if (user.isLoginSuccess === true) {
     return dispatch(setLoginSuccess(true))
   }
+}
+
+export const resetState = () => dispatch => {
+  return dispatch(resetResults())
 }
 
 export const logout = () => dispatch => {

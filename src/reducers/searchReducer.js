@@ -1,4 +1,4 @@
-import {SEARCH_BOOK_SUCCESS, SEARCH_BOOK_ERROR} from '../actions/actionTypes';
+import {SEARCH_BOOK_SUCCESS, SEARCH_BOOK_ERROR, RESET_RESULTS} from '../actions/actionTypes';
 import _ from 'lodash'
 
 const initialState = {
@@ -19,6 +19,11 @@ export const searchReducer = (state=initialState, action) => {
         resultsBooks: [...state.resultsBooks, ...action.books],
         term: action.term
       });
+    case RESET_RESULTS:
+      return {
+        ...state,
+        resultsBooks: []
+      };
     default:
       return state;
   }
@@ -27,5 +32,3 @@ export const searchReducer = (state=initialState, action) => {
 export default searchReducer;
 
 
-    // case RESET:
-    //   return initialState;

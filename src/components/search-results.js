@@ -1,7 +1,7 @@
 import React from 'react';
 import BottomScrollListener from 'react-bottom-scroll-listener';
 import {connect} from 'react-redux';
-import {addBook, bookSearch} from '../actions/index';
+import {addBook, bookSearch, resetState} from '../actions/index';
 import './search-results.css';
 import '../grid.css';
 import _ from 'lodash';
@@ -25,6 +25,10 @@ class SearchResults extends React.Component {
   onSave(book) {
     this.props.dispatch(addBook(book))
   }
+
+  // componentWillUnmount() {
+  //   this.props.dispatch(resetState())
+  // }
 
   render() {
     const books = this.props.resultsBooks.map(book =>

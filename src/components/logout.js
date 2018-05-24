@@ -1,6 +1,6 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import {logout} from '../actions/index';
+import {logout, resetState} from '../actions/index';
 import {connect} from 'react-redux';
 
 class Logout extends React.Component {
@@ -12,7 +12,7 @@ class Logout extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout(), dispatch(resetState()))
   }
 }
 
