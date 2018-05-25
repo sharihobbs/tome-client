@@ -7,7 +7,7 @@ export const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
 export const FETCH_READING_LIST_SUCCESS = 'FETCH_READING_LIST_SUCCESS';
 export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 export const USER_LOGOUT = 'USER_LOGOUT';
-export const RESET = 'RESET';
+export const RESET_RESULTS = 'RESET_RESULTS';
 
 
 // Handle success on book search
@@ -63,7 +63,7 @@ export const userLogout = isLogout => ({
 })
 
 // Reset resultsBooks to initial state
-export const reset = initialState => ({
-  type: RESET,
-  initialState
+export const resetResults = resultsBooks => ({
+  type: RESET_RESULTS,
+  resultsBooks
 })

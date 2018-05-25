@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {bookSearch} from '../actions/index';
+import {bookSearch, resetState} from '../actions/index';
 import './search-form.css';
 
 
@@ -15,6 +15,7 @@ class SearchForm extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
+    this.props.dispatch(resetState());
     this.props.dispatch(bookSearch(this.state.query));
   }
 
