@@ -101,7 +101,7 @@ export const login = (email, password) => dispatch => {
 
 export const isLoggedIn = () => dispatch => {
   let user = JSON.parse(localStorage.getItem('user'));
-  if (user.isLoginSuccess === true) {
+  if (user && user.isLoginSuccess === true) {
     return dispatch(setLoginSuccess(true))
   }
 }
