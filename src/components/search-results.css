@@ -6,6 +6,10 @@ li, ul {
   list-style-type: none;
 }
 
+.hidden {
+  display: none;
+}
+
 .results {
   margin-top: 40px;
 }
@@ -44,7 +48,7 @@ li, ul {
 
 .title {
   margin: 0;
-  height: 60px;
+  height: 50px;
   white-space: pre-wrap;
   overflow: auto;
   text-overflow: ellipsis;
@@ -56,17 +60,21 @@ li, ul {
 
 .author {
   margin: 5px;
-  font-size: 14px;
+  font-size: 10px;
+  height: 30px;
   text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden
 }
 
 .isbn {
-  font-size: 10px;
+  font-size: 8px;
   text-align: left;
 }
 
 .note-wrapper {
-  margin-top: 20px;
+  margin-top: 30px;
   position: absolute;
 }
 
@@ -85,12 +93,30 @@ li, ul {
   text-align: left;
 }
 
+.saved-note {
+  display: block;
+  height: 35px;
+  width: 95%;
+  border-radius: 3px;
+  border-color: lightgray;
+  text-align: left;
+}
+
 .list-title {
   text-align: left;
 }
 
-.btn-wrapper {
-  margin: auto;
+.saved {
+  margin-top: 40px;
+  display: inline-block;
+  font-size: 16px;
+  background-color: #006C7F;
+  color: white;
+  border-radius: 3px;
+  padding: 5px;
 }
 
-
+.save-btn {
+  margin: auto;
+  font-size: 12px;
+}

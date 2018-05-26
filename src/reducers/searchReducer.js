@@ -6,9 +6,6 @@ const initialState = {
 };
 
 export const searchReducer = (state=initialState, action) => {
-  _.map(action.books, book => {
-    console.log(book.id, book.title, book.authors)
-  })
   switch (action.type) {
     case SEARCH_BOOK_ERROR:
       return Object.assign({}, state, {
@@ -16,19 +13,16 @@ export const searchReducer = (state=initialState, action) => {
       });
     case SEARCH_BOOK_SUCCESS:
       return Object.assign({}, state, {
-        resultsBooks: [...state.resultsBooks, ...action.books],
+        resultsBooks: _.uniqBy([...state.resultsBooks, ...action.books], 'id'),
         term: action.term
       });
     case RESET_RESULTS:
-      return {
-        ...state,
+      return Object.assign({}, state, {
         resultsBooks: []
-      };
+      });
     default:
       return state;
   }
 };
 
 export default searchReducer;
-
-

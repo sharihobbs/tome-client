@@ -15,6 +15,10 @@ button {
   padding-right: 5px;
 }
 
+.hidden {
+  display: none;
+}
+
 .book {
   width: 100%;
   max-width: 250px;
@@ -51,7 +55,7 @@ button {
 
 .title {
   margin: 0;
-  height: 40px;
+  height: 60px;
   white-space: pre-wrap;
   overflow: auto;
   text-overflow: ellipsis;
@@ -93,9 +97,6 @@ button {
   text-align: left;
 }
 
-.btn-wrapper {
-  text-align: left;
+.delete {
+  font-size: 12px;
 }
-
-
-

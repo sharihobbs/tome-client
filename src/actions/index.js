@@ -9,6 +9,7 @@ import {
   resetResults
 } from './actionTypes';
 
+// Reading List Action Creators
 export const fetchReadingList = () => dispatch => {
   fetch(`${API_BASE_URL}/readinglist/books`)
   .then(res => {
@@ -29,6 +30,7 @@ export const deleteBook = (book) => dispatch => {
   .then(dispatch(deleteBookSuccess(book)))
 };
 
+// Book Search Action Creators
 export const bookSearch = (term, page) => dispatch => {
   fetch(`${API_BASE_URL}/search`, {
     method: 'POST',
@@ -54,6 +56,9 @@ export const bookSearch = (term, page) => dispatch => {
 
 export const addBook = (book) => dispatch => {
   let author = book.authors && book.authors[0]
+  let isbn = book.industryIdentifiers &&
+             book.industryIdentifiers[0] &&
+             book.industryIdentifiers[0].identifier
   fetch(`${API_BASE_URL}/readinglist/books/add`, {
     method: 'POST',
     headers: {
@@ -64,8 +69,9 @@ export const addBook = (book) => dispatch => {
       title: book.title || '',
       author: author || '',
       thumbnail: book.thumbnail || '',
-      isbn: book.industryIdentifiers[0].identifier,
-      note: book.note
+      isbn: isbn || book.id,
+      note: book.note,
+      googleId: book.googleId
     })
   })
   .then(res => {
@@ -79,6 +85,7 @@ export const addBook = (book) => dispatch => {
   })
 };
 
+// Login/Logout Action Creators
 export const login = (email, password) => dispatch => {
   dispatch(setLoginSuccess(false));
   dispatch(setLoginError(null));
