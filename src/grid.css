@@ -14,11 +14,12 @@
  *   so 960 + 20 + 20 => 1000px
  *
  **/
+
 .row {
   max-width: 800px;
   padding-left: 20px;
   padding-right: 20px;
-  margin: 0 auto;
+  margin: auto;
 }
 
 /* Clearfix */
@@ -50,9 +51,13 @@
   width: 100%;
 }
 
-
 /* Non-mobile, grid */
 @media only screen and (min-width: 640px) {
+
+  .title {
+    margin-top: 10px;
+  }
+
   /* 3 columns, 3/12 in % */
   .col-3 {
     width: 25%;

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './title-card.css';
+import '../grid.css';
 
 class TitleCard extends React.Component {
 
