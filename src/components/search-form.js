@@ -28,8 +28,9 @@ class SearchForm extends React.Component {
                 <label htmlFor="terms" className="terms">Search for any book by Title, Author, Subject, or ISBN.</label>
             </div>
             <div className="input-container">
-                <input id="terms" name="terms" className="search-input" component="input" type="text" placeholder="Paula Hawkins, Cell, parenting, etc." onChange={e => this.setState({query: e.target.value})} value={query}/>
+                <input id="terms" name="terms" className="search-input" component="input" type="text" placeholder="Paula Hawkins, Cell, parenting, etc." onChange={e => this.setState({query: e.target.value})} value={query} required/>
                 <input type="submit" className="terms-btn" value="Search" />
+                <img className="poweredby" src="https://books.google.com/googlebooks/images/poweredby.png" alt="Powered by the Google Books API Family"/>
             </div>
         </div>
     </form>
