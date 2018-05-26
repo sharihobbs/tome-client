@@ -27,6 +27,7 @@ class ReadingList extends React.Component {
               <div className="img-container">
                 <img src={book.thumbnail} className="thumbnail" alt={book.title}></img>
               </div>
+                <p className="googleId hidden">{book.googleId}</p>
                 <p className="title">{book.title}</p>
                 <p className="author">{book.author}</p>
                 <p className="isbn">ISBN: {book.isbn}</p>
