@@ -38,6 +38,13 @@ a.terms-btn {
   margin-left: 5px;
 }
 
+.input-container {
+  width: 300px;
+  margin: auto;
+}
 
-
-
+.poweredby {
+  display: block;
+  margin-top: 5px;
+  margin-left: 10px;
+}
