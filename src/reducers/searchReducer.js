@@ -9,7 +9,7 @@ export const searchReducer = (state=initialState, action) => {
   switch (action.type) {
     case SEARCH_BOOK_ERROR:
       return Object.assign({}, state, {
-        searchBookError: action.searchBookError
+        searchError: action.searchError
       });
     case SEARCH_BOOK_SUCCESS:
       return Object.assign({}, state, {

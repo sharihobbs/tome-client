@@ -1,4 +1,4 @@
-const resultsBooks = [{
+export const resultsBooks = [{
             id: 1111,
             thumbnail: 'https://books.google.com/books/content?id=99Uo01-ptl4C&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE70iEdSDG5MbRu4RjdgY7fUI2cqvcq1Lgck5A5QzHhrYkP4QUDo7PUSdnPGOD1AHCLngSTIdRdNEpicf5tfx23E_X7S6nW0UscR4Qt6dkrvl-KkkzQsenIdwY9vCPkbrMOyShJMk',
             title: 'Rilke\'s Book of Hours: Love Poems to God',

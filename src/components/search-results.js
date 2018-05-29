@@ -1,13 +1,13 @@
-import React from 'react';
-import BottomScrollListener from 'react-bottom-scroll-listener';
-import {connect} from 'react-redux';
-import {addBook, bookSearch, fetchReadingList} from '../actions/index';
-import './search-results.css';
-import '../grid.css';
-import _ from 'lodash';
+import React from 'react'
+import BottomScrollListener from 'react-bottom-scroll-listener'
+import {connect} from 'react-redux'
+import PropTypes from 'prop-types'
+import {addBook, bookSearch, fetchReadingList} from '../actions/index'
+import './search-results.css'
+import '../grid.css'
+import _ from 'lodash'
 
-
-class SearchResults extends React.Component {
+export class SearchResults extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,17 +18,17 @@ class SearchResults extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchReadingList())
+    this.props.fetchReadingList()
   }
 
   handleScroll() {
     let nextPage = this.state.page + 1
     this.setState({page: nextPage})
-    this.props.dispatch(bookSearch(this.props.searchTerm, this.state.page));
+    this.props.search(this.props.searchTerm, this.state.page)
   }
 
   onSave(book) {
-    this.props.dispatch(addBook(book))
+    this.props.addBook(book)
   }
 
   renderNoteWrapper(book) {
@@ -74,22 +74,38 @@ class SearchResults extends React.Component {
             </div>
           </div>
       </li>
-    );
+    )
 
     return (
       <div className="row">
         <ul className="search-results">{books}</ul>
         <BottomScrollListener onBottom={this.handleScroll} />
       </div>
-    );
+    )
   }
+}
+
+SearchResults.propTypes = {
+  resultsBooks: PropTypes.array,
+  searchTerm: PropTypes.string,
+  search: PropTypes.func.isRequired,
+  addBook: PropTypes.func.isRequired,
+  fetchReadingList: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
   return {
     resultsBooks: mapSavedBooks(state.searchReducer.resultsBooks, state.booksReducer.readingBooks),
     searchTerm: state.searchReducer.term
-  };
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchReadingList: () => dispatch(fetchReadingList()),
+    search: (query) => dispatch(bookSearch(query)),
+    addBook: (book) => dispatch(addBook(book))
+  }
 }
 
 function mapSavedBooks(searchResults, readingList=[]) {
@@ -101,4 +117,4 @@ function mapSavedBooks(searchResults, readingList=[]) {
   )
 }
 
-export default connect(mapStateToProps)(SearchResults);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResults)

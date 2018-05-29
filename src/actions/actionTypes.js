@@ -16,10 +16,10 @@ export const searchBookSuccess = (books, term) => ({
 })
 
 // Handle error on book search
-export const searchBookError = searchError => ({
-  type: SEARCH_BOOK_ERROR,
-  searchError
-})
+// export const searchBookError = searchError => ({
+//   type: SEARCH_BOOK_ERROR,
+//   searchError
+// })
 
 // Fetch ReadingList books from the api
 export const fetchReadingListSuccess = books => ({

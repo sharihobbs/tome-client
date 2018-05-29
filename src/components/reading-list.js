@@ -1,21 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types'
 import {fetchReadingList, deleteBook} from '../actions/index';
 import './reading-list.css';
 import '../grid.css';
 
-class ReadingList extends React.Component {
+export class ReadingList extends React.Component {
   constructor(props) {
     super(props);
     this.onDelete = this.onDelete.bind(this);
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchReadingList())
+    this.props.fetchReadingList()
   }
 
   onDelete(book) {
-    this.props.dispatch(deleteBook(book))
+    this.props.deleteBook(book)
   }
 
   render() {
@@ -53,12 +54,25 @@ class ReadingList extends React.Component {
   }
 }
 
+ReadingList.propTypes = {
+  fetchReadingList: PropTypes.func.isRequired,
+  loginError: PropTypes.string,
+  readingBooks: PropTypes.array,
+  deleteBook: PropTypes.func.isRequired
+}
+
 function mapStateToProps(state) {
   return {
-    isLoginSuccess: state.loginReducer.isLoginSuccess,
     loginError: state.loginReducer.loginError,
     readingBooks: state.booksReducer.readingBooks
   };
 }
 
-export default connect(mapStateToProps)(ReadingList);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchReadingList: () => dispatch(fetchReadingList()),
+    deleteBook: (book) => dispatch(deleteBook(book))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReadingList);

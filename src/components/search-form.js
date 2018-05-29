@@ -1,28 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bookSearch, resetState} from '../actions/index';
 import './search-form.css';
 
 
-class SearchForm extends React.Component {
+export class SearchForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       query: ''
     };
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.dispatch(resetState());
-    this.props.dispatch(bookSearch(this.state.query));
+    if (this.state.query.length !== 0) {
+      this.props.resetState()
+      this.props.search(this.state.query)
+    }
   }
 
   render() {
     const {query} = this.state;
     return (
-    <form name="searchForm" onSubmit={this.onSubmit}>
+      <form id="searchForm" name="searchForm" onSubmit={this.onSubmit.bind(this)}>
         <div className="search-collection">
             <div className="label-container">
                 <label htmlFor="terms" className="terms">Search for any book by Title, Author, Subject, or ISBN.</label>
@@ -33,9 +35,20 @@ class SearchForm extends React.Component {
                 <img className="poweredby" src="https://books.google.com/googlebooks/images/poweredby.png" alt="Powered by the Google Books API Family"/>
             </div>
         </div>
-    </form>
+      </form>
     )
   }
 }
 
-export default connect()(SearchForm)
+SearchForm.propTypes = {
+  search: PropTypes.func.isRequired,
+  resetState: PropTypes.func.isRequired
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    search: (query) => dispatch(bookSearch(query)),
+    resetState: () => dispatch(resetState())
+  }
+}
+export default connect(null, mapDispatchToProps)(SearchForm)

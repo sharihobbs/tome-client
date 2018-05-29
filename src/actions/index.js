@@ -11,7 +11,7 @@ import {
 
 // Reading List Action Creators
 export const fetchReadingList = () => dispatch => {
-  fetch(`${API_BASE_URL}/readinglist/books`)
+  return fetch(`${API_BASE_URL}/readinglist/books`)
   .then(res => {
     if (!res.ok) {
         return Promise.reject(res.statusText);
@@ -24,7 +24,7 @@ export const fetchReadingList = () => dispatch => {
 };
 
 export const deleteBook = (book) => dispatch => {
-  fetch(`${API_BASE_URL}/readinglist/books/remove/${book.id}`, {
+  return fetch(`${API_BASE_URL}/readinglist/books/remove/${book.id}`, {
     method: 'DELETE'
   })
   .then(dispatch(deleteBookSuccess(book)))
@@ -32,7 +32,7 @@ export const deleteBook = (book) => dispatch => {
 
 // Book Search Action Creators
 export const bookSearch = (term, page) => dispatch => {
-  fetch(`${API_BASE_URL}/search`, {
+  return fetch(`${API_BASE_URL}/search`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -45,7 +45,7 @@ export const bookSearch = (term, page) => dispatch => {
   })
   .then(res => {
     if (!res.ok) {
-        return Promise.reject(res.statusText);
+      return Promise.reject(res.statusText);
     }
     return res.json();
   })
@@ -59,7 +59,7 @@ export const addBook = (book) => dispatch => {
   let isbn = book.industryIdentifiers &&
              book.industryIdentifiers[0] &&
              book.industryIdentifiers[0].identifier
-  fetch(`${API_BASE_URL}/readinglist/books/add`, {
+  return fetch(`${API_BASE_URL}/readinglist/books/add`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
