@@ -27,15 +27,19 @@ a.terms-btn {
   display: inline-block;
   margin: 0 auto;
   width: 230px;
+  height: 25px;
   text-align: left;
+  border-radius: 3px;
+  border:1px solid lightgray;
 }
 
 ::placeholder {
   color: lightgray;
+  font-size: 12px;
 }
 
 .terms-btn {
-  margin-left: 5px;
+  margin-left: 3px;
 }
 
 .input-container {
