@@ -15,8 +15,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 PrivateRoute.propTypes = {
-  location: PropTypes.string,
-  component: PropTypes.func
+  location: PropTypes.string.isRequired,
+  component: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {

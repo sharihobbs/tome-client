@@ -57,7 +57,7 @@ export class ReadingList extends React.Component {
 ReadingList.propTypes = {
   fetchReadingList: PropTypes.func.isRequired,
   loginError: PropTypes.string,
-  readingBooks: PropTypes.array,
+  readingBooks: PropTypes.array.isRequired,
   deleteBook: PropTypes.func.isRequired
 }
 

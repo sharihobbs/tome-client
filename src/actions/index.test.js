@@ -5,7 +5,8 @@ import {
     fetchReadingList,
     deleteBook,
     bookSearch,
-    addBook
+    addBook,
+    transformGoogleBook
   } from './index';
 
 import {
@@ -17,142 +18,125 @@ import {
 
 Enzyme.configure({ adapter: new Adapter() });
 
-// fetchReadingList
-describe('fetchReadingList', () => {
-  it('should dispatch fetchReadingListSuccess', () => {
-    const results = {
-      books:[]
-    };
+const dispatch = jest.fn();
 
-    global.fetch = jest.fn().mockImplementation(() =>
-      Promise.resolve({
+function setupGlobalFetch(response) {
+  global.fetch = jest.fn().mockImplementation(() => Promise.resolve(response))
+}
+
+describe('src/actions/index.js', () => {
+  context('fetchReadingList', () => {
+    it('should dispatch fetchReadingListSuccess', () => {
+      const results = {
+        books: []
+      }
+      const readinglistResp = {
         ok: true,
         json() {
-            return results;
+          return results
         }
-      })
-    );
+      }
+      setupGlobalFetch(readinglistResp)
 
-    const dispatch = jest.fn();
-    return fetchReadingList()(dispatch)
-    .then(() => {
-      expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/readinglist/books`);
-      expect(dispatch).toHaveBeenCalledWith(fetchReadingListSuccess(results.books))
+      return fetchReadingList()(dispatch)
+      .then(() => {
+        expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/readinglist/books`);
+        expect(dispatch).toHaveBeenCalledWith(fetchReadingListSuccess(results.books))
+      })
     })
   })
-})
 
-// deleteBook
-describe('deleteBook', () => {
-  it('should dispatch deleteBookSuccess', () => {
-    const idNum = 12345;
-    const methodType = {
-      method: 'DELETE'
-    };
-    const book = {
-      id: idNum
+  context('deleteBook', () => {
+    it('should dispatch deleteBookSuccess', () => {
+      const idNum = 12345;
+      const methodType = {
+        method: 'DELETE'
       };
-
-    global.fetch = jest.fn().mockImplementation(() =>
-      Promise.resolve({
+      const book = {
+        id: idNum
+      };
+      const deleteBookResp = {
         json() {
-            return book;
+          return book
         }
-      })
-    );
+      }
+      setupGlobalFetch(deleteBookResp)
 
-    const dispatch = jest.fn();
-    return deleteBook(book)(dispatch)
-    .then(() => {
-      expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/readinglist/books/remove/${book.id}`, methodType);
-      expect(dispatch).toHaveBeenCalledWith(deleteBookSuccess(book))
+      return deleteBook(book)(dispatch)
+      .then(() => {
+        expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/readinglist/books/remove/${book.id}`, methodType);
+        expect(dispatch).toHaveBeenCalledWith(deleteBookSuccess(book))
+      })
     })
   })
-})
 
-// bookSearch
-describe('bookSearch', () => {
-  it('should dispatch searchBookSuccess', () => {
-    const results = 'anything';
-    const term = 'cats';
-    const page = '1';
-    const searchBody = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        query: term,
-        page: page
-      })
-    };
+  context('bookSearch', () => {
+    it('should dispatch searchBookSuccess', () => {
+      const results = 'anything';
+      const term = 'cats';
+      const page = '1';
 
-    global.fetch = jest.fn().mockImplementation(() =>
-      Promise.resolve({
+      const searchBody = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          query: term,
+          page: page
+        })
+      };
+      const bookSearchResp = {
         ok: true,
         json() {
-            return results;
+          return results
         }
-      })
-    );
+      }
+      setupGlobalFetch(bookSearchResp)
 
-    const dispatch = jest.fn();
-    return bookSearch(term, page)(dispatch)
-    .then(() => {
-      expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/search`, searchBody);
-      expect(dispatch).toHaveBeenCalledWith(searchBookSuccess(results, term))
+      return bookSearch(term, page)(dispatch)
+      .then(() => {
+        expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/search`, searchBody);
+        expect(dispatch).toHaveBeenCalledWith(searchBookSuccess(results, term))
+      })
     })
   })
-})
 
-// addBook
-describe('addBook', () => {
-  it('should add book to ReadingList', () => {
-    const results = 'anything';
-    const book = [{
+  context('addBook', () => {
+    it('should add book to ReadingList', () => {
+      const results = 'anything';
+      const googleBook = {
         title: 'title',
-        author: 'author',
+        authors: ['author'],
         thumbnail: 'thumbnail',
-        isbn: 1234567891,
-        note: 'note',
-        googleId: 'googleId'
-    }];
-    const author = book.authors && book.authors[0]
-    const isbn = book.industryIdentifiers &&
-             book.industryIdentifiers[0] &&
-             book.industryIdentifiers[0].identifier
-    const searchBody = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        title: book.title || '',
-        author: author || '',
-        thumbnail: book.thumbnail || '',
-        isbn: isbn || book.id,
-        note: book.note,
-        googleId: book.googleId
-      })
-    };
-
-    global.fetch = jest.fn().mockImplementation(() =>
-      Promise.resolve({
+        industryIdentifiers: [{
+          identifier: 1234567891
+        }],
+        googleId: 'googleId',
+      };
+      const book = transformGoogleBook(googleBook)
+      const addBody = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(book)
+      };
+      const addBookResp = {
         ok: true,
         json() {
-            return results;
+          return results
         }
-      })
-    );
+      }
+      setupGlobalFetch(addBookResp)
 
-    const dispatch = jest.fn();
-    return addBook(book)(dispatch)
-    .then(() => {
-      expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/readinglist/books/add`, searchBody);
-      expect(dispatch).toHaveBeenCalledWith(addBookSuccess(book))
+      return addBook(googleBook)(dispatch)
+      .then(() => {
+        expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/readinglist/books/add`, addBody);
+        expect(dispatch).toHaveBeenCalledWith(addBookSuccess(book))
+      })
     })
   })
 })
-

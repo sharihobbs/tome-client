@@ -9,3 +9,4 @@ export const localStorageMock = {
   clear: jest.fn()
 };
 global.localStorage = localStorageMock
+global.context = describe

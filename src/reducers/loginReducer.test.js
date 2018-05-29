@@ -4,7 +4,6 @@ import {setLoginSuccess, setLoginError} from '../actions/actionTypes';
 
 describe('loginReducer', () => {
   const error = 'error message';
-
   it('Should set the user login status', () => {
       let state;
       state = loginReducer(state, setLoginSuccess(true));
@@ -16,6 +15,4 @@ describe('loginReducer', () => {
       state = loginReducer(state, setLoginError(error));
       expect(state.loginError).toEqual(error);
   });
-
 });
-

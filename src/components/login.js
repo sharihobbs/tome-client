@@ -74,7 +74,7 @@ export class LoginForm extends React.Component {
 LoginForm.propTypes = {
   setLoginError: PropTypes.func,
   login: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.func,
   loginError: PropTypes.func,
   isLoginSuccess: PropTypes.bool,
   history: PropTypes.object

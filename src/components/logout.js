@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 export class Logout extends React.Component {
 
   componentDidMount() {
+    this.props.resetState();
     this.props.logout();
   }
 
@@ -18,12 +19,14 @@ export class Logout extends React.Component {
 }
 
 Logout.propTypes = {
-  logout: PropTypes.func
+  logout: PropTypes.func.isRequired,
+  resetState: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: () => dispatch(logout(), dispatch(resetState()))
+    logout: () => dispatch(logout()),
+    resetState: () => dispatch(resetState())
   }
 }
 
