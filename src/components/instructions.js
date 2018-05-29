@@ -1,5 +1,6 @@
 import React from 'react';
 import TitleCard from './title-card';
+import {Link} from 'react-router-dom'
 import './instructions.css';
 import '../grid.css';
 
@@ -21,6 +22,14 @@ export default function Instructions() {
           <div className="card">
             <p>Change your mind about a book? You can easily remove books from your Reading List. Or if it was love at first page turn, you can remove it from your list after reading.</p>
           </div>
+        </div>
+        <div>
+          <Link
+            to="/login"
+            id="login-prompt"
+            className="hvr-grow"
+            >Login to start searching!
+          </Link>
         </div>
       </div>
     </div>
