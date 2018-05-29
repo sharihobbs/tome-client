@@ -14,7 +14,8 @@ function setup() {
 
   const props = {
     login: jest.fn(),
-    isLoggedIn: jest.fn()
+    isLoggedIn: jest.fn(),
+    setLoginError: jest.fn()
   }
 
   const wrapper = mount(<LoginForm {...props} store={store} />)
