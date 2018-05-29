@@ -1,4 +1,4 @@
-import {SEARCH_BOOK_SUCCESS, SEARCH_BOOK_ERROR, RESET_RESULTS} from '../actions/actionTypes';
+import {SEARCH_BOOK_SUCCESS, RESET_RESULTS} from '../actions/actionTypes';
 import _ from 'lodash'
 
 const initialState = {
@@ -7,10 +7,6 @@ const initialState = {
 
 export const searchReducer = (state=initialState, action) => {
   switch (action.type) {
-    case SEARCH_BOOK_ERROR:
-      return Object.assign({}, state, {
-        searchBookError: action.searchBookError
-      });
     case SEARCH_BOOK_SUCCESS:
       return Object.assign({}, state, {
         resultsBooks: _.uniqBy([...state.resultsBooks, ...action.books], 'id'),

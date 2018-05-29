@@ -1,5 +1,4 @@
 export const SEARCH_BOOK_SUCCESS = 'SEARCH_BOOK_SUCCESS';
-export const SEARCH_BOOK_ERROR = 'SEARCH_BOOK_ERROR';
 export const ADD_BOOK_SUCCESS = 'ADD_BOOK_SUCCESS';
 export const DELETE_BOOK = 'DELETE_BOOK';
 export const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
@@ -13,12 +12,6 @@ export const searchBookSuccess = (books, term) => ({
   type: SEARCH_BOOK_SUCCESS,
   books,
   term
-})
-
-// Handle error on book search
-export const searchBookError = searchError => ({
-  type: SEARCH_BOOK_ERROR,
-  searchError
 })
 
 // Fetch ReadingList books from the api

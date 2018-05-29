@@ -8,8 +8,8 @@ const initialState = {
   loginError: null,
   isLogOut: true
 }
-  
-export default function loginReducer(state = initialState, action) {
+
+export const loginReducer =(state=initialState, action) => {
   switch (action.type) {
     case SET_LOGIN_SUCCESS:
       return Object.assign({}, state, {
@@ -23,3 +23,5 @@ export default function loginReducer(state = initialState, action) {
       return state;
   }
 }
+
+export default loginReducer;

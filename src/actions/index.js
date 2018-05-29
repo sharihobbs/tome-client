@@ -11,7 +11,7 @@ import {
 
 // Reading List Action Creators
 export const fetchReadingList = () => dispatch => {
-  fetch(`${API_BASE_URL}/readinglist/books`)
+  return fetch(`${API_BASE_URL}/readinglist/books`)
   .then(res => {
     if (!res.ok) {
         return Promise.reject(res.statusText);
@@ -24,7 +24,7 @@ export const fetchReadingList = () => dispatch => {
 };
 
 export const deleteBook = (book) => dispatch => {
-  fetch(`${API_BASE_URL}/readinglist/books/remove/${book.id}`, {
+  return fetch(`${API_BASE_URL}/readinglist/books/remove/${book.id}`, {
     method: 'DELETE'
   })
   .then(dispatch(deleteBookSuccess(book)))
@@ -32,7 +32,7 @@ export const deleteBook = (book) => dispatch => {
 
 // Book Search Action Creators
 export const bookSearch = (term, page) => dispatch => {
-  fetch(`${API_BASE_URL}/search`, {
+  return fetch(`${API_BASE_URL}/search`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -45,7 +45,7 @@ export const bookSearch = (term, page) => dispatch => {
   })
   .then(res => {
     if (!res.ok) {
-        return Promise.reject(res.statusText);
+      return Promise.reject(res.statusText);
     }
     return res.json();
   })
@@ -55,24 +55,14 @@ export const bookSearch = (term, page) => dispatch => {
 };
 
 export const addBook = (book) => dispatch => {
-  let author = book.authors && book.authors[0]
-  let isbn = book.industryIdentifiers &&
-             book.industryIdentifiers[0] &&
-             book.industryIdentifiers[0].identifier
-  fetch(`${API_BASE_URL}/readinglist/books/add`, {
+  const saveBook = transformGoogleBook(book)
+  return fetch(`${API_BASE_URL}/readinglist/books/add`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      title: book.title || '',
-      author: author || '',
-      thumbnail: book.thumbnail || '',
-      isbn: isbn || book.id,
-      note: book.note,
-      googleId: book.googleId
-    })
+    body: JSON.stringify(saveBook)
   })
   .then(res => {
     if (!res.ok) {
@@ -81,7 +71,7 @@ export const addBook = (book) => dispatch => {
     return res.json();
   })
   .then(() => {
-    dispatch(addBookSuccess(book))
+    dispatch(addBookSuccess(saveBook))
   })
 };
 
@@ -113,6 +103,22 @@ export const resetState = () => dispatch => {
 export const logout = () => dispatch => {
   localStorage.removeItem('user');
   return dispatch(setLoginSuccess(false))
+}
+
+// exported for testing
+export const transformGoogleBook = (book) => {
+  let author = book.authors && book.authors[0]
+  let isbn = book.industryIdentifiers &&
+             book.industryIdentifiers[0] &&
+             book.industryIdentifiers[0].identifier
+  return {
+    title: book.title || '',
+    author: author || '',
+    thumbnail: book.thumbnail || '',
+    isbn: isbn || book.id,
+    note: book.note,
+    googleId: book.googleId
+  }
 }
 
 function makeLoginCall(email, password, callback) {

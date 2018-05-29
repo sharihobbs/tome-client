@@ -1,12 +1,13 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {login, isLoggedIn} from '../actions/index';
 import {setLoginError} from '../actions/actionTypes'
 import TitleCard from './title-card';
 import './login.css';
 
-class LoginForm extends React.Component {
+export class LoginForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -24,11 +25,20 @@ class LoginForm extends React.Component {
     this.props.isLoggedIn()
   }
 
+  onSubmit(e) {
+    e.preventDefault()
+    this.props.login(this.state.email, this.state.password)
+    this.setState({
+      email: '',
+      password: ''
+    })
+  }
+
   render() {
     const {email, password} = this.state;
     const loginForm = (
       <div><TitleCard />
-        <form name="loginForm" onSubmit={this.onSubmit}>
+        <form id="loginForm" name="loginForm" onSubmit={this.onSubmit}>
           <div className="form-group-collection">
             <div className="form-group">
               <label className="login-label">Email:</label>
@@ -59,21 +69,21 @@ class LoginForm extends React.Component {
     }
     return loginForm
   }
+}
 
-  onSubmit(e) {
-    e.preventDefault()
-    this.props.login(this.state.email, this.state.password)
-    this.setState({
-      email: '',
-      password: ''
-    })
-  }
+LoginForm.propTypes = {
+  setLoginError: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.func.isRequired,
+  loginError: PropTypes.instanceOf(Error),
+  isLoginSuccess: PropTypes.bool,
+  history: PropTypes.object
 }
 
 const mapStateToProps = (state) => {
   return {
     isLoginSuccess: state.loginReducer.isLoginSuccess,
-    loginError: state.loginReducer.loginError,
+    loginError: state.loginReducer.loginError
   };
 }
 
