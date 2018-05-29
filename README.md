@@ -2,7 +2,7 @@
 
 Tome was built with my sometimes disorganized brain in mind... I found myself constantly forgetting the titles or authors of books that were recommended to me or losing notes I'd written when I saw a book referenced in a magazine or by my son's teacher. I have always wanted one app to keep track of the books that I'm always on the hunt for whether it's in my weekly trip to the library or on a lazy meander through the local bookstore. Tome offers this along with a handy space to make note of just why I added the book to my list in the first place. Keep track of where you first heard of it, who might want to read it next, or when it needs to be in the mail to your Aunt Beth. Tome is simple, no-fuss, and utilizes the Google Books API Family to provide realiable, up to date information. Tome: What do you want to read next? 
 
-## Link to View Live
+## Link to View Live App
 https://sharp-swirles-724079.netlify.com/
 
 ## Functionalities
@@ -24,9 +24,10 @@ Search Page (before searching)
 Search Page (with results)
 <img width="976" alt="tome search after" src="https://user-images.githubusercontent.com/29738609/40688179-0147b012-6352-11e8-8f1b-f15a6e561b88.png">
 
-## API Documentation
+## API Documentation 
+Found here: https://github.com/sharihobbs/tome-api/blob/master/README.md
 
-## Built With:
+## App Built With:
 * React
 * HTML
 * CSS
