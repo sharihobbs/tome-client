@@ -31,11 +31,18 @@ a.terms-btn {
   text-align: left;
   border-radius: 3px;
   border:1px solid lightgray;
+  padding: 3px;
 }
 
-::placeholder {
+input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: lightgray;
   font-size: 12px;
+  font-family: 'PT Sans', sans-serif;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: lightgray;
 }
 
 .terms-btn {
